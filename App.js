@@ -1,20 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect,useState, useContext } from "react";
+import { View } from 'react-native';
+import Routes from './src/routes';
+import { GlobalProvider } from './src/global/GlobalState';
+import { StagiaireProvider } from './src/global/StagiaireState';
+import 'react-native-gesture-handler';
+import 'react-native-get-random-values';
 
-export default function App() {
+
+  export default function App ({navigation})  {
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{flex:1}}>
+      <GlobalProvider>
+         <StagiaireProvider>
+            <Routes/>
+         </StagiaireProvider>
+    </GlobalProvider>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
